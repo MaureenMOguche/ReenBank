@@ -1,0 +1,206 @@
+﻿@using RB.Models.ViewModels;
+@using RB.Utility;
+@model ProfileAccountTransactionsVM;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<partial name="_Notifications" />
+
+<div class="account-section">
+    <div class="container-fluid p-5 h-100">
+        <div class="row h-100">
+            <div class="col-lg-2 h-100 pe-3 border-end">
+                <div class="h-25">
+                    <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">reenBank</a>
+                </div>
+                <div class="h-75">
+                    <ul class="h-75">
+                        <li class="mb-3"><a asp-action="Index" class="text-green">
+                            <div class="nav-group">
+                                <i class="bi bi-grid-fill me-5 fs-3 text-green"></i>
+                                <span class="fs-5 fw-bold text-green">Overview</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Accounts">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-credit-card me-5 fs-3"></i>
+                                <span class="fs-5">Accounts</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Transactions">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-arrow-left-right me-5 fs-3"></i>
+                                <span class="fs-5">Transactions</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Profile">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-person me-5 fs-3"></i>
+                                <span class="fs-5">Profile</span>
+                            </div>
+                        </a></li>
+                    </ul>
+                    <div>
+                       <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                           <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><i class="bi bi-arrow-left"></i> Logout</button>
+                       </form>
+             
+                    </div>
+            </div>
+            </div>
+            <div class="col-lg-6 ps-5">
+                <div class="row h-25 pt-2">
+                    <div class="col">
+                        <h2>OverView</h2>
+                    </div>
+                    <div class="col text-end">
+                        <p class="fs-6 text-darker-green mb-0">@Model.SenderUser.Name</p>
+                        <h2 class="mt-0">@Model.SenderAccount.AccountNumber</h2>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col">
+                        <h4>Current Account Balance</h4>
+                    </div>
+                    <div class="col mb-2 d-flex">
+                        <i class="bi bi-eye-slash p-2 btn-outline-success border me-2"></i>
+                        <input class="form-control" type="date" id="datepicker"/>
+
+                        <div class="bg-secondary">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row bg-light-green p-5">
+                    <div class="col text-dark border-end">
+                        <p class="fs-6 mb-0 text-purple">Current Balance</p>
+                        <h2><del>N</del>@Model.SenderAccount.Balance</h2>
+                    </div>
+
+                    <div class="col text-dark border-end">
+                        <p class="fs-6 mb-0 text-purple">Income</p>
+                        <h2>@Model.TotalIncome</h2>
+                    </div>
+
+                    <div class="col text-dark">
+                        <p class="fs-6 mb-0 text-purple">Expenses</p>
+                        <h2>@Model.TotalExpenses</h2>
+                    </div>
+                </div>
+                    
+                <div class="mt-5">
+                    <h3 class="mb-0 text-purple">Statistics</h3>
+
+                    <div class="row align-items-center mb-4 mt-2">
+                        <div class="col-3 text-center">
+                            <h5>Income</h5>
+                        </div>
+                        <div class="col-6 text-center">
+                            <progress class="w-100 income" value="@Model.TotalIncome" 
+                                max="@(Model.TotalIncome + Model.TotalExpenses)"></progress>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5 class="text-green">@Model.TotalIncome</h5>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-3 text-center">
+                            <h5>Expenses</h5>
+                        </div>
+                        <div class="col-6 text-center">
+                            <progress class="w-100 expenses" value="@Model.TotalExpenses" 
+                                max="@(Model.TotalIncome + Model.TotalExpenses)"></progress>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5 class="text-danger">@Model.TotalExpenses</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 ps-5 h-100">
+               <div class="h-25 pt-2">
+                   <div class="row align-items-center h-25">
+                       <div class="col">
+                           <input type="text" />
+                       </div>
+                       <div class="col text-end">
+                           <i class="bi bi-bell"></i>
+                           <img src="" class="profile-image"/>
+                       </div>
+                   </div>
+                </div> 
+                
+                <div class="h-75 pt-2 pe-3 d-flex flex-column justify-content-between">
+                   <div class="row h-25">
+                       <div class="col">
+                           <h5>Transactions</h5>
+                       </div>
+                       <div class="col text-end">
+                           <a class="text-green"><i class="bi bi-arrow-right fw-bold"></i></a>
+                       </div>
+                   </div>
+
+                   <div>
+                       <table class="table">
+                           @foreach(var item in Model.TransactionsList)
+                            {
+                                <tr>
+                                    @if (item.TransactionType == TransactionType.Credit)
+                                    {
+                                        <td>@item.From</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.To</td>
+                                    }
+                                    <td>@item.TransactionDate</td>
+                                    @if (item.TransactionType == TransactionType.Credit)
+                                    {
+                                        <td class="text-green fw-bold fs-5">+@item.Amount</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-danger fw-bold fs-5">-@item.Amount</td>
+                                    }
+                                </tr>
+                            }
+                        </table>
+                   </div>
+
+                   <div class="upgrade ps-5 pt-4 pb-4 text-light">
+                       
+                      <i class="bi bi-arrow-right"></i>
+                      <div>
+                          <h5>Upgrade to Pro</h5>
+                          <p>Sign in on multiple devices</p>
+                      </div>
+                       
+                   </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*
+@section Scripts{
+    <script>
+        $('.datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    immediateUpdates: true,
+    todayBtn: true,
+    todayHighlight: true
+}).datepicker("setDate", "0");
+    </script>
+}*@

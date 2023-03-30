@@ -1,0 +1,550 @@
+:root {
+    --lightgreen: #D4F3E7;
+    --green: #0F855F;
+    --darker-green: #065039;
+    --yellow: #FEA622;
+    --purple: purple;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
+h1 {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.section-spacing{
+    padding: 120px 0;
+}
+.bg-light-green{
+    background-color: var(--lightgreen);
+}
+.bg-green{
+    background-color: var(--green);
+}
+.bg-darker-green {
+    background-color: var(--darker-green);
+}
+.text-green {
+    color: var(--green);
+}
+.text-darker-green {
+    color: var(--darker-green);
+}
+.text-purple{
+    color: var(--purple);
+}
+
+.sm-fnt{
+    font-size: .8rem;
+}
+
+.btn-outline-green {
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    padding: 8px 12px;
+    text-decoration: none;
+    line-height: 40px;
+}
+.yellow-btn {
+    background-color: var(--yellow);
+    color: white;
+    font-weight: bold;
+    padding: 12px 34px;
+    border-radius: 10px;
+}
+.my-form-control{
+    width:100%;
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 12px;
+}
+.rounded-5 {
+    border-radius: 28px;
+}
+.rounded-6{
+    border-radius: 48px;
+}
+.icon-pad{
+    padding: 5px 10px;
+}
+.bi-facebook{
+    font-size: 3rem;
+}
+/*==============================
+      Boootstrap defaults
+==============================*/
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*==============================
+      Navigation
+==============================*/
+.logo{
+    font-size: 2.5rem;
+    color: var(--green);
+    text-decoration: none;
+}
+
+
+/*==============================
+      Header
+==============================*/
+.hero {
+    height: 80vh;
+    /* height: 550px; */
+    /* background-image: linear-gradient(75deg, rgba(164,52,145),rgba(51,0,51)); */
+    background: linear-gradient(93.71deg, #0F855F 3.57%, #065039 107.14%);
+    /* background: linear-gradient(93.71deg, #8A1CA6 3.57%, #320E3B 107.14%); */
+
+    width: 90%;
+    margin: auto;
+    border-radius: 70px;
+    position: relative;
+}
+
+.goTo-circle::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: var(--green);
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px;
+}
+
+.goTo-circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+}
+.samsung img{
+    position: absolute;
+    left: -49px;
+    bottom: 0;
+    z-index: 2;
+}
+
+.hero-content {
+    padding: 7% 0 7% 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.other-hero {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+   /* top: 100px;
+    left: 200px;*/
+    background-image: url("~/images/Greenotherhero.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+/*===================================
+        Services
+===================================*/
+.white-card{
+    height: 300px;
+    box-shadow: 0 0 15px rgb(15, 104, 76);
+    border-radius: 60px;
+}
+
+
+
+/*===================================
+        Register
+===================================*/
+.register-section {
+    width: 100%;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #D4F3E7;
+    background: url(../images/register.png);
+    background-size: contain;
+    display: flex;
+    align-items: center;
+}
+.register-section h1,
+.account-section h1{
+    font-size: 3rem;
+}
+
+.account-section {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--lightgreen);
+    background: url(../images/dashboard.png);
+    background-size: contain;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon{
+    position:absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+}
+.socials i{
+    margin-right: 10px;
+}
+
+
+.nav-group{
+    display: flex;
+    align-items: center;
+}
+.account-left-border{
+    border-left: 8px solid var(--purple);
+}
+
+
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    background-color: dimgrey;
+    border-radius: 50%;
+}
+.upgrade{
+    background: url("../images/Rectangle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 220px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*==============================
+      Deposit
+==============================*/
+#modal-container,
+#modal-container2{
+    position:relative;
+    display: none;
+}
+#my-modal,
+#my-modal2{
+    position:fixed;
+    left: 0;
+    top:0;
+    right:0;
+    bottom:0;
+    background-color: rgb(128, 128, 128, .6);
+    /*display: none;*/
+}
+
+#my-modal-content{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+    z-index: 999;
+}
+
+#my-modal-content2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    z-index: 999;
+}
+
+progress{
+    height: 15px;
+}
+progress.income{
+    /*color: var(--green);*/
+    background-color: var(--green);
+}
+
+progress.expenses{
+    background-color: red;
+}
+
+.blob1 {
+    position: absolute;
+    height: 60px;
+    width: 57px;
+    left: 40px;
+    z-index: -1;
+}
+
+h2.lg-fnt {
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+.white-card{
+    padding: 20px 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gradient-circle {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /*width: 1038px;*/
+    height: 100%;
+    background: linear-gradient(180deg, #D4F3E7 0%, #0F855F 100%);
+    opacity: 0.15;
+    filter: blur(150px);
+    z-index: -1;
+}
+
+.gloss-bg:before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+}
+.gloss-bg {
+    background: inherit;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 30px;
+
+}
+
+.numbering{
+    width: 70px;
+    height: 70px;
+}
+
+.testimonial-content {
+    width:100%;
+    height: 800px;
+    background-image: url('../images/group3187.png');
+    background-repeat: no-repeat;
+    /*padding-bottom: 900px;*/
+}
+.testimonial-card{
+    position: absolute;
+    left: 46%;
+    top:43%;
+}
+.mouth-circle{
+    position: absolute;
+    width:25px;
+    height:25px;
+    top:-8px;
+    left:-8px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.inner-mouth{
+    width: 15px;
+    height: 15px;
+}
+
+footer input{
+    background:none;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 0 12px;
+    color: white;
+}
+
+footer input::placeholder{
+    color: white;
+}
+.subscribe-btn{
+    background-color:var(--yellow);
+    color: white;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    padding: 10px 15px;
+}
+footer h2{
+    letter-spacing: 5px;
+}
+footer i {
+    padding-left: 10px;
+}
+footer {
+    border-bottom-right-radius: 150px;
+}
+
+.samsung-mobile{
+    display:none;
+}
+
+.logo-mobile{
+    display: none;
+}
+
+
+
+@media (max-width: 680px) {
+    .logo-mobile{
+        display:block;
+    }
+    .samsung {
+        display: none;
+    }
+
+    .samsung-mobile {
+        display: block;
+    }
+    .samsung-mobile img{
+        width: 80%;
+        margin: auto;
+    }
+
+    [class^=col]{
+        padding: 0 4%;
+    }
+
+    nav.navbar{
+        width: 100%;
+        padding: 4%;
+    }
+    .login-nav{
+        display: none;
+    }
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+    }
+    .hero-content p{
+        margin: 10px 0;
+    }
+    .goTo-circle::after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: var(--green);
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 18px;
+    }
+
+    .goTo-circle {
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        background-color: white;
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -50px;
+    }
+
+
+    .register-section {
+        width: 100%;
+        position: initial;
+       /* top: 0;
+        left: 0;
+        right: 0;*/
+        background-color: var(--lightgreen);
+        background: url(../images/register.png);
+        background-size: contain;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-section{
+        padding: 3% 4%;
+    }
+   /* .register-left{
+        display: none;
+    }*/
+    .register-section .container{
+        padding-top: 0;
+    }
+    .register-right{
+        padding-top: 0;
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content:center;
+    }
+    .resend-confirmation{
+        flex-direction: column;
+    }
+
+    .account-section {
+        width: 100%;
+        position: initial;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--lightgreen);
+        background: url(../images/dashboard.png);
+        background-size: contain;
+        display: flex;
+        align-items: center;
+    }
+}

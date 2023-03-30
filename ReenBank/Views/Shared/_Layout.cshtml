@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ReenBank</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ReenBank.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <partial name="_Navigation" />
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    
+    <div class="mt-5">&nbsp;&nbsp;</div>
+    <footer class="bg-green border-top footer text-light mt-5 pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <h2 class="fs-1">Subscribe to our <br /> mailing list</h2>
+                </div>
+                <div class="col-lg">
+                    <form>
+                        <div class="position-relative">
+                        <input placeholder="Email Address" />
+                        <button class="btn subscribe-btn"><i class="bi bi-send"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <a class="text-light mb-0 pb-0 logo" asp-area="" asp-controller="Home" asp-action="Index">reenBank</a>
+                    <p class="mt-0 pt-0">
+                        &copy; @DateTime.Now.Year - ReenBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </p>
+                </div>
+                <div class="col-lg text-end">
+                    <div>
+                        <hr class="text-light mb-0" />
+                        <ul class="d-flex align-items-center justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="Customers" asp-controller="Home" asp-action="Services">Our Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="Customers" asp-controller="Home" asp-action="WhyUs">Why Choose Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="Customers" asp-controller="Home" asp-action="Transfer">Money Transfer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="Customers" asp-controller="Home" asp-action="Contact">Contact Us</a>
+                            </li>
+
+                        
+                            @if (User.IsInRole("Customer"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Customers" asp-controller="Dashboard" asp-action="Index">Dashbord</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="btn text-light btn-outline-light" id="register" asp-area="Identity" asp-page="/Account/Register"><span class="fw-bold">Get Started</span> - it's free</a>
+                                </li>
+                            }
+                        </ul>
+                        <hr class="text-light mt-0" />
+                    </div>
+                    <div class="d-flex fs-3 align-items-center justify-content-end">
+                        <a>
+                            <i class="bi bi-facebook text-light"></i>
+                        </a>
+
+                        <a>
+                            <i class="bi bi-instagram icon-pad rounded-circle bg-light text-green"></i>
+                        </a>
+
+                        <a href="https://www.twitter.com/MaureenOguche" target="_blank">
+                            <i class="bi bi-twitter icon-pad rounded-circle bg-light text-green"></i>
+                        </a>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="sweetalert2.all.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

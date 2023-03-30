@@ -1,0 +1,48 @@
+﻿@using RB.Models.ViewModels;
+@model ProfileAccountTransactionsVM;
+<form method="post" asp-action="Deposit">
+	<input asp-for="SenderAccount.Id" hidden />
+	<input asp-for="SenderUser.Id" hidden />
+<div class="bg-light p-5 rounded-6">
+	<h1 class="text-green">Fund Wallet</h1>
+	<p class="fs-6 fw-bold mb-1">Select Payment Method</p>
+	<div class="row gx-2 pb-3">
+		<div class="row mb-3">
+			<div class="col">
+				<a class="w-100 btn btn-outline-secondary d-flex align-items-center" disabled>
+					<div style="width:15px;height:15px" class="border rounded-circle bg-danger me-3"></div>
+					Direct Pay
+				</a>
+			</div>
+			<div class="col">
+				<a class="w-100 btn btn-outline-secondary d-flex align-items-center" disabled>
+					<div style="width:15px;height:15px" class="border rounded-circle me-3"></div>
+					Credit Card
+				</a>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">Amount</label>
+			<input class="my-form-control" placeholder="100000" type="number" asp-for="DepositAmount"/>
+			<span asp-validation-for="DepositAmount" class="sm-fnt text-danger"></span>
+		</div>
+
+		<div class="mb-3 row">
+			<div class="col">
+				<a onclick="CloseModal()" class="btn btn-secondary w-100">
+					Cancel
+				</a>
+			</div>
+			<div class="col">
+				<button type="submit" class="btn bg-green w-100 text-light">
+					Fund
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+@section Script{
+	<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,130 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="register-section">
+
+    <div class="container pt-5 pb-5">
+        @*<a class="logo text-center mb-3 logo-mobile" asp-area="" asp-controller="Home" asp-action="Index">reenBank</a>*@
+<div class="row bg-transparent">
+    <div class="col-lg-6 p-4 pe-5 register-left">
+        <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">reenBank</a>
+
+        <div class="register-content mt-5">
+            <p class="text-green mb-0 fs-4">Reen Bank</p>
+            <h1 class="mt-0">Experience <br /> Hassle Free Banking</h1>
+            <p class="mt-4 fs-5">
+                Experience simple, secure, and stress-free banking. 
+                Say goodbye to long queues and complex procedures 
+                and hello to hassle-free banking with Reen Bank.
+            </p>
+        </div>
+
+        <div class="socials mt-5 fs-3">
+            <a>
+                <i class="bi bi-facebook text-green"></i>
+            </a>
+
+            <a>
+                <i class="bi bi-instagram icon-pad rounded-circle bg-green text-light"></i>
+            </a>
+
+            <a href="https://www.twitter.com/MaureenOguche" target="_blank">
+                <i class="bi bi-twitter icon-pad rounded-circle bg-green text-light"></i>
+            </a>
+            
+        </div>
+        
+    </div>
+    <div class="col-lg-6 bg-light p-4 rounded-6 register-right">
+        <form class="ps-5 pe-5 pt-5" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h1 class="text-green fs-2">Register.</h1>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="mb-3 position-relative">
+                <label asp-for="Input.Name" class="sm-fnt fw-bold mb-1">Name</label>
+                <i class="bi bi-person input-icon"></i>
+                <input asp-for="Input.Name" class="my-form-control" placeholder="Maureen Oguche" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3 position-relative">
+                <label asp-for="Input.Email" class="sm-fnt fw-bold mb-1">Email</label>
+                <i class="bi bi-envelope input-icon"></i>
+                <input asp-for="Input.Email" class="my-form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3 position-relative">
+                <label asp-for="Input.Password" class="sm-fnt fw-bold mb-1">Password</label>
+                <i class="bi bi-lock input-icon"></i>
+                <input asp-for="Input.Password" class="my-form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3 position-relative">
+                <label asp-for="Input.ConfirmPassword" class="sm-fnt fw-bold mb-1">Confirm Password</label>
+                <i class="bi bi-lock input-icon"></i>
+                <input asp-for="Input.ConfirmPassword" class="my-form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="checkbox" name="privacy" asp-for="Input.Privacy"/>
+                <label for="privacy">I agree to all the <a class="text-green fw-bold">Terms,</a> <a class="text-green fw-bold">Privacy Policy</a> and <a class="text-green fw-bold">Fees</a></label>
+                <br /><span asp-validation-for="Input.Privacy" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg bg-green text-light">Register</button>
+        </form>
+        
+        <p class="ps-5 mt-2 mb-4">Already have an Account? <a class="text-green fw-bold" asp-area="Identity" asp-page="/Account/Login">Log in</a></p>
+         
+    </div>
+   @* <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to register.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>*@
+</div>
+    
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+    function CheckBoxRequired(sender, e)
+    {
+        e.IsValid = jQuery(".AcceptedAgreement input:checkbox").is(':checked');
+        if e.IsValid === true{
+            return true;
+        }
+        return false;
+    }
+    </script>
+}

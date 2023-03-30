@@ -1,0 +1,59 @@
+﻿@using RB.Models.ViewModels;
+@model ProfileAccountTransactionsVM;
+@{
+	ViewData["Title"] = "Transfer";
+}
+
+
+<form method="post" asp-action="Transfer">
+	<input asp-for="SenderAccount.Id" hidden />
+	<input asp-for="SenderUser.Id" hidden />
+<div class="bg-light p-5 rounded-6">
+	<h1 class="text-green">Transfer</h1>
+	
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">Account Number</label>
+			<input class="my-form-control" asp-for="SenderAccount.AccountNumber" disabled/>
+		</div>
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">Name</label>
+			<input class="my-form-control" asp-for="SenderUser.Name" disabled/>
+		</div>
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">Amount</label>
+			<input class="my-form-control" asp-for="DepositAmount" type="number"/>
+		</div>
+		<br />
+
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">To</label>
+			<input class="my-form-control" placeholder="Account Number" 
+				asp-for="ReceiverAccount.AccountNumber" type="number"/>
+		</div>
+
+		<div class="mb-3">
+			<label class="fs-6 fw-bold mb-1">Name</label>
+			<input class="my-form-control" id="accname" name="accname" asp-for="ReceiverUser.Name" disabled/>
+		</div>
+		
+
+		<div class="mb-3 row">
+			<div class="col">
+				<a onclick="TCloseModal()" class="btn btn-secondary w-100">
+					Cancel
+				</a>
+			</div>
+			<div class="col">
+				<button type="submit" class="btn bg-green w-100 text-light">
+					Transfer
+				</button>
+			</div>
+		</div>
+</div>
+</form>
+
+@section Script{
+	@*<partial name="_ValidationScriptsPartial" />*@
+
+
+}

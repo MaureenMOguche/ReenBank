@@ -1,0 +1,168 @@
+﻿@using RB.Models.ViewModels;
+@using RB.Utility;
+@model TransactionsVM;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="account-section">
+    <div class="container-fluid p-5 h-100">
+        <div class="row h-100">
+            <div class="col-lg-2 h-100 pe-3 border-end">
+                <div class="h-25">
+                    <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">reenBank</a>
+                </div>
+                <div class="h-75">
+                    <ul class="h-75">
+                        <li class="mb-3"><a asp-action="Index">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-grid me-5 fs-3 text-secondary"></i>
+                                <span class="fs-5">Overview</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Accounts">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-credit-card me-5 fs-3"></i>
+                                <span class="fs-5">Accounts</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Transactions">
+                            <div class="nav-group text-green fw-bold">
+                                <i class="bi bi-arrow-left-right me-5 fs-3"></i>
+                                <span class="fs-5">Transactions</span>
+                            </div>
+                        </a></li>
+
+                        <li class="mb-3"><a asp-action="Profile">
+                            <div class="nav-group text-secondary">
+                                <i class="bi bi-person me-5 fs-3"></i>
+                                <span class="fs-5">Profile</span>
+                            </div>
+                        </a></li>
+                    </ul>
+                    <div>
+                       <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                           <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0"><i class="bi bi-arrow-left"></i> Logout</button>
+                       </form>
+             
+                    </div>
+            </div>
+            </div>
+            <div class="col-lg ps-5">
+              
+                <div class="row">
+                    <div class="col">
+                        <h2>Transactions</h2>
+                    </div>
+                    <div class="col text-end">
+                         <p class="fs-6 text-darker-green mb-0">@Model.AccountUser.Name</p>
+                         <h2 class="mt-0">@Model.BankAccount.AccountNumber</h2>
+                    </div>
+                    <div class="col">
+                        <div class="row align-items-center h-25">
+                           <div class="col">
+                               <input type="text" />
+                           </div>
+                           <div class="col text-end">
+                               <i class="bi bi-bell"></i>
+                               <img src="" class="profile-image"/>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                
+              
+                <div class="row bg-light-green ps-5 pe-5 pt-3 pb-3 account-left-border mt-3">
+                    <div class="row">
+                        <div class="col text-dark border-end">
+                            <p class="fs-6 mb-0 text-purple">Balance</p>
+                            <h3><del>N</del>@Model.BankAccount.Balance</h3>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="mt-4">
+                        <form asp-action="Transactions">
+                            <div class="row mt-3 mb-3">
+                                <div class="col-lg-5">
+                                    <label class="form-label">Start Date</label>
+                                    <input type="date" name="StartDate" class="my-form-control" />
+                                </div>
+                                <div class="col-lg-5">
+                                    <label class="form-label">End Date</label>
+                                    <input type="date" name="EndDate" class="my-form-control" />
+                                </div>
+                                <div class="col-lg-2 my-auto">
+                                    <button type="submit" class="w-100 btn bg-green text-light">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table table-responsive table-striped">
+                            <tbody>
+                                @foreach(var item in Model.TransactionsList)
+                                {
+                                    <tr>
+                                        @if (item.TransactionType == TransactionType.Credit)
+                                        {
+                                            <td valign="middle">@item.From</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.To</td>
+                                        }
+
+                                        <td valign="middle">@item.TransactionDate</td>
+                                        @if (item.TransactionType == TransactionType.Credit)
+                                        {
+                                            <td class="text-green fw-bold fs-4">@item.Amount</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-danger fw-bold fs-4">@item.Amount</td>
+                                        }
+                                       
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <a asp-action="PrintStatement" class="btn bg-green text-light">Download PDF</a>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+        $('.datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    immediateUpdates: true,
+    todayBtn: true,
+    todayHighlight: true
+}).datepicker("setDate", "0");
+
+
+    function DepositModal(){
+        document.getElementById('modal-container').style.display = "block";
+    }
+
+    function TransferModal(){
+        document.getElementById('modal-container2').style.display = "block";
+    }
+
+    function CloseModal(){
+	    document.getElementById('modal-container').style.display = "none";
+	}
+    function TCloseModal(){
+	    document.getElementById('modal-container2').style.display = "none";
+	}
+    </script>
+}
