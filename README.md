@@ -1,6 +1,6 @@
 # ReenBank
 
-[]
+![ReenBank](https://user-images.githubusercontent.com/103169301/230017568-7e1246c0-6767-4907-855c-8a76cb805954.png)
 
 Reen Bank is an e-banking platform that enables one to carry out basic banking transactions.
 It's key features include:
