@@ -1,6 +1,7 @@
 # ReenBank
 
-![ReenBank](https://user-images.githubusercontent.com/103169301/230017568-7e1246c0-6767-4907-855c-8a76cb805954.png)
+
+![ReenBank](https://user-images.githubusercontent.com/103169301/230018416-ae9a4282-ed12-4292-a0fa-b85a7cd0e86e.png)
 
 Reen Bank is an e-banking platform that enables one to carry out basic banking transactions.
 It's key features include:
@@ -36,3 +37,5 @@ It's key features include:
 ### Download Statement
 - click "Transactions" on your dashboard
 - At the bottom of the screen, click "Download as PDF"
+
+![ReenBank](https://user-images.githubusercontent.com/103169301/230017568-7e1246c0-6767-4907-855c-8a76cb805954.png)
